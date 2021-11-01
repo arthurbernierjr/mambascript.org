@@ -1,0 +1,39 @@
+React = require 'react'
+{ useState, useEffect } = require 'react'
+{ $, pureComponent } = require('mambascript/decision')(React)
+PostContent = require '../components/PostContent.mamba'
+AppLayout = require '../layout/AppLayout.mamba'
+
+
+Home = (props)->
+###
+  [state, setState] = useState([])
+  fetchPost = ->
+    fetch('/api/posts')
+      .then((response)->
+        response.json()
+      ).then((data)->
+        setState(data)
+      ).catch((err)->
+        present err
+      )
+    return (-> null)
+
+  useEffect(fetchPost, [])
+###
+  Posts = pureComponent (data) ->
+    data.map((item) ->
+      $ PostContent, { post: item }
+    )
+
+  return (
+    $ AppLayout, { header: yes }, =>
+      unless props.posts.length
+        return $ 'h1', 'No More Posts...'
+      else
+        $ 'div', Posts(props.posts)
+        $ 'a', { href: '/allposts', style: { zIndex: 5, display: 'flex', justifyContent:'center', alignItems: 'center' }}, =>
+          $ 'h2', { style: { zIndex: 5, textAlign: 'center' }}, 'Click Here To See Additional Posts...'
+  )
+
+module.exports = Home

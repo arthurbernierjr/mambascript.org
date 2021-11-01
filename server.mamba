@@ -1,0 +1,127 @@
+require('dotenv').config()
+Mamba = require 'mambascript'
+Mamba.register()
+{ MambaView } = Mamba
+express = require 'express'
+app = express()
+fs = require 'fs'
+path = require 'path'
+json = "#{__dirname}/json"
+pillar = "#{__dirname}/json_pillar"
+PORT = process.env.PORT || 8000
+matter = require 'gray-matter'
+showdown  = require 'showdown'
+converter = new showdown.Converter()
+mongoose = require 'mongoose'
+leads = require './models/leadController.mamba'
+
+MONGODB_URI = process.env.MONGO_URI
+db = mongoose.connection
+
+mongoose.connect MONGODB_URI, {
+    useNewUrlParser: true
+    useUnifiedTopology: true
+}
+
+db.on 'open', -> present 'Connected to Mongo'
+
+
+# Middleware
+app.use express.json()
+app.set 'views', './src'
+app.set 'view engine', 'mamba'
+app.engine 'mamba', require('./engine.js').createEngine()
+app.use express.static('public')
+app.use '/addLead', leads
+
+getFirstPost = (req, res, next) ->
+  fs.readFile "#{pillar}/start-here.json", 'utf8', (err, file) ->
+    if err
+      console.error(err)
+    else
+      res.locals = JSON.parse(file)
+      next()
+
+app.get '/', getFirstPost, (req, res) ->
+  fs.readFile "#{json}/all.json", 'utf8', (err, file) ->
+    if err
+      console.error(err)
+    else
+      res.render 'pages/Home', {
+        posts: [ res.locals, JSON.parse(file).slice(0,10)...]
+      }
+app.get '/allposts', (req, res) ->
+  fs.readFile "#{json}/all.json", 'utf8', (err, file) ->
+    if err
+      console.error(err)
+    else
+      res.render 'pages/Home', {
+        posts: JSON.parse(file).slice(10)
+      }
+app.get '/docs', (req, res) ->
+  fs.readFile "#{json}_static/docs.json", 'utf8', (err, file) ->
+    if err
+      console.error(err)
+    else
+      res.render 'pages/Docs', {
+        post: JSON.parse(file)
+      }
+app.get '/links', (req, res) ->
+  fs.readFile "#{json}_static/links.json", 'utf8', (err, file) ->
+    if err
+      console.error(err)
+    else
+      res.render 'pages/Links', {
+        post: JSON.parse(file)
+      }
+
+app.get '/projects', (req, res) ->
+  fs.readFile "#{json}_static/projects.json", 'utf8', (err, file) ->
+    if err
+      console.error(err)
+    else
+      res.render 'pages/Projects', {
+        post: JSON.parse(file)
+      }
+app.get '/start-here', (req, res) ->
+  fs.readFile "#{pillar}/start-here.json", 'utf8', (err, file) ->
+    if err
+      console.error(err)
+    else
+      res.render 'pages/Show', {
+        post: JSON.parse(file)
+      }
+
+app.get '/:post', (req, res) ->
+  fs.readFile "#{json}/#{req.params.post}.json", 'utf8', (err, file) ->
+    if err
+      console.error(err)
+    else
+      res.render 'pages/Show', {
+        post: JSON.parse(file)
+      }
+
+app.get '/api/posts', (req, res) ->
+  fs.readFile "#{json}/all.json", 'utf8', (err, file) ->
+    if err
+      console.error(err)
+    else
+      res.status(200).json(JSON.parse(file))
+
+
+app.get '/api/:post', (req, res) ->
+  fs.readFile "#{json}/#{req.params.post}.json", 'utf8', (err, file) ->
+    if err
+      console.error(err)
+    else
+      res.status(200).json(JSON.parse(file))
+
+
+###
+# Controller Ends here
+app.get '*', (req, res) ->
+  res.sendFile path.resolve("#{__dirname}/public/404.html"
+###
+
+# LISTENER
+app.listen PORT, -> present "API Listening on port #{PORT}"

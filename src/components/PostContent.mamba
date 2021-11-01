@@ -1,0 +1,38 @@
+Decision = require 'mambascript/decision'
+React = require 'react'
+{ Fragment } = require 'react'
+$ = Decision(React).$
+# { Link } = require 'react-router-mambascript'
+
+PostContent= (props) ->
+  { post } = props
+  return (
+    $ Fragment, =>
+      $ 'div', { className: 'card', style:{ 'zIndex': 2 } }, =>
+        $ 'h5', { className: 'card-header' }, =>
+          $ 'a', { href: "/#{post._id}" }, post.data.title
+        $ 'div', { className: 'card-body' }, =>
+            $ 'h5', { className: 'card-title'}, post.data.subTitle
+            $ 'p', { className: 'card-text'}, post.data.excerpt
+
+
+  )
+
+module.exports = PostContent
+
+###
+<div class="card">
+  <h5 class="card-header">Featured</h5>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+$ Fragment , =>
+  $ Link, { to: "/#{post._id}" }, =>
+    $ 'h1', post.data.title
+    $ 'h3', post.data.subTitle
+  $ 'div', className: 'container', dangerouslySetInnerHTML: { __html: post.content }
+###
