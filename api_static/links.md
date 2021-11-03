@@ -8,6 +8,10 @@ date: '10/21/21'
 
 # Contact Me via :
 
+#### [Click Here To Go To Start-Here](/start-here)
+#### [Click Here To Go To Getting Ready to Learn MambaScript](/learning-mambascript)
+#### [Click Here To Go To Docs](/docs)
+
 | Property | Description | Link |
 | ------------------ | ------------------------------------------ |  --------------------- |
 | LinkedIn | For Business Inquiries and Networking | [Arthur on LinkedIn](https://linkedin.com/in/developmentandmanagement)|

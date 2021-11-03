@@ -1,6 +1,6 @@
 ---
 title: 'Getting Ready to Learn MambaScript'
-subTitle: 'Examples of MambaScript Code'
+subTitle: 'How to setup your device for using mambascript'
 excerpt: 'I want to be the best. I want to be the best simple and plain, thats what drives me - Kobe Bryant'
 featureImage: '/img/mamba.gif'
 date: '10/28/21'
@@ -10,6 +10,9 @@ date: '10/28/21'
 
 # Getting Ready To Code In MambaScript
 
+#### [Click Here To Go To Start-Here](/start-here)
+#### [Click Here To Go To Getting Ready to Learn MambaScript](/learning-mambascript)
+#### [Click Here To Go To Docs](/docs)
 
 # Step 1
 

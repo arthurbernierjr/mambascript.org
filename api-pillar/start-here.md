@@ -8,6 +8,10 @@ date: '10/31/21'
 
 # MambaScript
 
+#### [Click Here To Go To Start-Here](/start-here)
+#### [Click Here To Go To Getting Ready to Learn MambaScript](/learning-mambascript)
+#### [Click Here To Go To Docs](/docs)
+
 ## Getting Started
 
 ```bash
@@ -33,3 +37,6 @@ be strict with your indentations, it makes your code cleaner and far more readab
 it being a scripting language like JS and of course the idea of Mamba Mentality. When I made the plunge to decide to make
 coding, (which had been a hobby of mine), my fulltime job, I was poor by any numerical way of figuring out what poor meant, but I had one thing and that was my mindset, and my Mentality and I never let my mind think it was poor, no matter how hard
 I had to grind I never let myself have `imposter syndrome` and I never let the sun come up a day without practicing my craft. To me that's the Mamba Mentality, and I like to think that that's in me. RIP Kobe.
+
+# [Click Here To Go To Getting Ready to Learn MambaScript](/learning-mambascript)
+# [Click Here To Go To Docs](/docs)

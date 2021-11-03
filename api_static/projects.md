@@ -5,6 +5,11 @@ excerpt: 'God is Good 1 appears on Index Page'
 featureImage: '/img/project.jpg'
 date: '10/21/21'
 ---
+
+#### [Click Here To Go To Start-Here](/start-here)
+#### [Click Here To Go To Getting Ready to Learn MambaScript](/learning-mambascript)
+#### [Click Here To Go To Docs](/docs)
+
 <!--
 <div class="card">
   <div class="card-header">
