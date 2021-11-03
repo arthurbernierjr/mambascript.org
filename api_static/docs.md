@@ -333,7 +333,7 @@ struct Point3d implements Point
 
 ### Module
 
-TypedCoffeeScript has module system like TypeScript
+MambaScript has module system like TypeScript
 
 ```coffee
 module A.B
