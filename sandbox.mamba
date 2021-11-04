@@ -1,0 +1,5 @@
+foods :: String[] = ['lettuce', 'filet mignon', 'steak', 'burger', 'pork chop']
+
+printFood :: String -> () = (food :: String ) -> present food
+
+printFood food forEvery food in foods when food isnt 'lettuce'

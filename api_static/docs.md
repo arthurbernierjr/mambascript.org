@@ -210,11 +210,11 @@ Objects in MambaScript are a way to store data that in an individual container
 
 ```coffee
 obj =  {
-  "MambaScript":	"JavaScript"
+  "MambaScript": "JavaScript"
   "is": "==="
   "isnt":	"!=="
   "not":	"!"
-  "also":	"&&"
+  "and also":	"&&"
   "or":	"||"
   "true yes on":	"true"
   "false no off":	"false"
@@ -279,7 +279,36 @@ nullableIntBySwitch :: Int? =
 ```
 
 ## Control Flow
-Coming Soon
+```coffee
+isCool = true
+
+# traditional if else
+if isCool
+  present 'You are cool'
+else
+  present 'You are lame'
+
+# ternary in MambaScript
+if isCool then present 'You are cool' else 'You are lame'
+
+# Unless is the opposite of if or the equivalent if !isCool
+unless isCool
+  present 'You are lame'
+else
+  present 'You are cool'
+
+# ternary with unless
+unless isCool then present 'You are lame' else present 'You are cool'
+
+# loops with when clause and function
+
+foods :: String[] = ['lettuce', 'filet mignon', 'steak', 'burger', 'pork chop']
+# function named printFood
+# It accepts a String and returns nothing 
+printFood :: String -> () = (food :: String ) -> present food
+
+printFood food forEvery food in foods when food isnt 'lettuce'
+```
 
 ## What is a pessimistic type interface?
 
