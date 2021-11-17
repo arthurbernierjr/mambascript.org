@@ -2,7 +2,7 @@
 title: 'Projects'
 subTitle: 'Some Things That I Have Worked On...'
 excerpt: 'God is Good 1 appears on Index Page'
-featureImage: '/img/project.jpg'
+featureImage: '/img/main_.png'
 date: '10/21/21'
 ---
 

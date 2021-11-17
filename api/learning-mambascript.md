@@ -1,7 +1,7 @@
 ---
 title: 'Getting Ready to Learn MambaScript'
 subTitle: 'How to setup your device for using mambascript'
-excerpt: 'I want to be the best. I want to be the best simple and plain, thats what drives me - Kobe Bryant'
+excerpt: 'This document will help you set up NodeJS, Download Atom, and SetUp Your Development Environment to Code with MambaScript'
 featureImage: '/img/mamba.gif'
 date: '10/28/21'
 ---

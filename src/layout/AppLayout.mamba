@@ -4,6 +4,7 @@ React = require 'react'
 $ = Decision(React).$
 AppHeader = require './AppHeader.mamba'
 AppNavBar = require './AppNavBar.mamba'
+MobileNavBar = require './MobileNavBar.mamba'
 
 AppLayout = (props)->
   $ 'html', =>
@@ -15,7 +16,10 @@ AppLayout = (props)->
       $ 'div', { className: 'app-layout' }, =>
         if props.header
           $ AppHeader
+        unless props.header
+          $ 'div', { className: 'mobile-bumper' }
         $ AppNavBar
+        $ MobileNavBar
         $ Fragment, props.children
         $ 'script', { src: "/prism.js" }
         $ 'script', { src: "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js",

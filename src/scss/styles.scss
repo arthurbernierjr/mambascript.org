@@ -22,12 +22,28 @@ $footerText: hsl(240, 2%, 79%);
 $bodyCopy: hsl(207, 13%, 34%);
 $footerBackground: hsl(240, 10%, 16%);
 $elegant-purple: #8E6E95;
-
+$main: rgba(37,28,5,0.6);
 /* Gradient */
 $veryLightRed: hsl(13, 100%, 72%);
 $lightRed: hsl(353, 100%, 62%);
 $veryDarkGrayBlue: hsl(237, 17%, 21%);
 $veryDarkDesaturatedBlue: hsl(237, 23%, 32%);
+
+*,
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; }
+
+html {
+    font-size: 10px; }
+
+body {
+    box-sizing: border-box;
+    font-size: 2rem;
+  }
 
 a, a:link, a:visited {
   text-decoration: none;
@@ -35,8 +51,8 @@ a, a:link, a:visited {
   z-index: 2;
   &:hover{
     color: $whiteText;
-    box-shadow: 2px 4px 8px transparentize(tan, 0.5);
-    background: transparentize(tan, 0.7);
+    box-shadow: 2px 4px 8px transparentize($main, 0.5);
+    background: transparentize($main, 0.7);
   }
 }
 .nav-item a:hover {
@@ -105,6 +121,9 @@ body {
   }
   .card {
     background-color: rgba(37, 28, 5, 0.6);
+    &-header {
+      font-size: 2.5rem;
+    }
   }
 }
 
@@ -131,7 +150,7 @@ h1 {
   background-size: contain;
   color: $whiteText;
   @include grid-media($mamba-grid-xs) {
-    height: 100vh;
+    height: 50vh;
   }
   .cover {
     background-color: rgba(37, 28, 5, 0.6);
@@ -147,7 +166,7 @@ h1 {
   h1 {
     font-family: 'Grand Hotel', cursive;
     font-weight: 500;
-    font-size: 5rem;
+    font-size: 8rem;
     color: ghostwhite;
     z-index: 2;
     @include grid-media($mamba-grid-xs) {
@@ -155,6 +174,7 @@ h1 {
     }
   }
   .subTitle {
+    font-size: 3rem;
     font-weight: 600;
     z-index: 2;
     @include grid-media($mamba-grid-xs) {
@@ -227,7 +247,7 @@ $ 'nav', { className: 'navbar card'}, =>
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-size: 2.2rem;
+    font-size: 3.2rem;
     text-decoration: none;
     list-style: none;
     flex-direction: row;
@@ -255,7 +275,7 @@ $ 'nav', { className: 'navbar card'}, =>
 .full-blog.container {
   .card {
     &-header {
-
+      font-size: 2.5rem;
     }
     &-title {
       text-align: center;
@@ -361,3 +381,165 @@ table{
       }
     }
   }
+
+  .mobile-bumper {
+    @include grid-media($mamba-grid-xs) {
+      min-height: 5rem;
+      height: 10vh;
+    }
+  }
+
+  @keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem); }
+    80% {
+        transform: translateX(1rem); }
+    100% {
+        opacity: 1;
+        transform: translate(0); } }
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem); }
+    80% {
+        transform: translateX(-1rem); }
+    100% {
+        opacity: 1;
+        transform: translate(0); } }
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem); }
+    100% {
+        opacity: 1;
+        transform: translate(0); } }
+
+.navigation{
+  .navigation__checkbox {
+      display: none; }
+
+  .navigation__button {
+      background-color: transparent;
+      height: 8rem;
+      width: 8rem;
+      position: fixed;
+      top: 3rem;
+      right: 3rem;
+      border-radius: 50%;
+      z-index: 2000;
+      box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+      text-align: center;
+      cursor: pointer;
+      @include grid-media($mamba-grid-xs) {
+        top: 0;
+        right: 0;
+      }
+    }
+
+  .navigation__background {
+      height: 7rem;
+      width: 7rem;
+      border-radius: 50%;
+      position: fixed;
+      top: 3.25rem;
+      right: 3.5rem;
+      background-image: radial-gradient(#fdfcf1, #000);
+      z-index: 1000;
+      transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+      @include grid-media($mamba-grid-xs) {
+        top: 0;
+        right: 0.5rem;
+      }
+    }
+
+  .navigation__nav {
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1500;
+      opacity: 0;
+      width: 0;
+      transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+
+  .navigation__list {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      list-style: none;
+      text-align: center;
+      width: 100%; }
+
+  .navigation__item {
+      margin: 1rem; }
+
+  .navigation__link:link, .navigation__link:visited {
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      color: darken($main, 1);
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+      background-size: 220%;
+      transition: all .4s; }
+  .navigation__link:link span, .navigation__link:visited span {
+      margin-right: 1.5rem;
+      display: inline-block; }
+
+  .navigation__link:hover, .navigation__link:active {
+      background-position: 100%;
+      color: darken($main, 0.3);
+      transform: translateX(1rem); }
+
+  .navigation__checkbox:checked ~ .navigation__background {
+      transform: scale(90); }
+
+  .navigation__checkbox:checked ~ .navigation__nav {
+      opacity: 1;
+      width: 100%; }
+
+  .navigation__icon {
+      position: relative;
+      margin-top: 3.5rem; }
+  .navigation__icon, .navigation__icon::before, .navigation__icon::after {
+      width: 3rem;
+      height: 2px;
+      background-color: #333;
+      display: inline-block; }
+  .navigation__icon::before, .navigation__icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all .2s; }
+  .navigation__icon::before {
+      top: -.8rem; }
+  .navigation__icon::after {
+      top: .8rem; }
+
+  .navigation__button:hover .navigation__icon::before {
+      top: -1rem; }
+
+  .navigation__button:hover .navigation__icon::after {
+      top: 1rem; }
+
+  .navigation__checkbox:checked + .navigation__button .navigation__icon {
+      background-color: transparent; }
+
+  .navigation__checkbox:checked + .navigation__button .navigation__icon::before {
+      top: 0;
+      transform: rotate(135deg); }
+
+  .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
+      top: 0;
+      transform: rotate(-135deg); }
+      .card-container {
+          display: flex;
+          flex-wrap: wrap;
+      }
+}
