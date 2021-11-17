@@ -27,7 +27,7 @@ Home = (props)->
     )
 
   return (
-    $ AppLayout, { header: yes }, =>
+    $ AppLayout, { title: 'MambaScript.org | HOME', header: yes }, =>
       unless props.posts.length
         return $ 'h1', 'No More Posts...'
       else

@@ -12,6 +12,16 @@ AppLayout = (props)->
       $ 'meta', { name: 'viewport', content: 'width=device-width, initial-scale=1'}
       $ 'link', { rel:'stylesheet', href: '/css/styles.css' }
       $ 'link', { rel:'stylesheet', href: '/prism.css' }
+      $ 'title', =>
+        $.text "#{props.title or 'MambaScript.org'}"
+      $ 'meta', { name: 'og:site_name', property: 'og:site_name', content: 'MambaScript.org'}
+      $ 'meta', { name: 'og:title', property: 'og:title', content: props.title or 'MambaScript.org'}
+      $ 'meta', { name: 'og:image', property: 'og:image', content: props.image or '/img/main_mamba.png'}
+      $ 'meta', { name: 'og:description', property: 'og:description', content: props.description or 'The rebirth of Typed Unfancy Javascript.... The rebellious teenage love child of TypeScript and Python who is their own person and seeks validation from neither... ( But deep down loves them both and would love their approval)'}
+      $ 'meta', { name: 'description', property: 'description', content: props.description or 'The rebirth of Typed Unfancy Javascript.... The rebellious teenage love child of TypeScript and Python who is their own person and seeks validation from neither... ( But deep down loves them both and would love their approval)'}
+      $ 'meta', { name: 'twitter:description', property: 'twitter:description', content: props.description or 'The rebirth of Typed Unfancy Javascript.... The rebellious teenage love child of TypeScript and Python who is their own person and seeks validation from neither... ( But deep down loves them both and would love their approval)'}
+      $ 'meta', { name: 'twitter:title', property: 'twitter:title', content: props.title or 'MambaScript.org'}
+      $ 'meta', { name: 'twitter:image', property: 'twitter:image', content: props.image or '/img/main_mamba.png'}
     $ 'body', =>
       $ 'div', { className: 'app-layout' }, =>
         if props.header
