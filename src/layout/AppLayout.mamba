@@ -22,6 +22,7 @@ AppLayout = (props)->
       $ 'meta', { name: 'twitter:description', property: 'twitter:description', content: props.description or 'The rebirth of Typed Unfancy Javascript.... The rebellious teenage love child of TypeScript and Python who is their own person and seeks validation from neither... ( But deep down loves them both and would love their approval)'}
       $ 'meta', { name: 'twitter:title', property: 'twitter:title', content: props.title or 'MambaScript.org'}
       $ 'meta', { name: 'twitter:image', property: 'twitter:image', content: props.image or '/img/main_mamba.png'}
+      $ 'meta', { name: 'og:url', property: 'og:url', content: "https://mambascript.org/#{props._id}"}
     $ 'body', =>
       $ 'div', { className: 'app-layout' }, =>
         if props.header
