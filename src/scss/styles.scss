@@ -35,8 +35,8 @@ a, a:link, a:visited {
   z-index: 2;
   &:hover{
     color: $whiteText;
-    box-shadow: 8px 16px 32px tan;
-    background: tan;
+    box-shadow: 2px 4px 8px transparentize(tan, 0.5);
+    background: transparentize(tan, 0.7);
   }
 }
 .nav-item a:hover {
@@ -116,14 +116,16 @@ h1 {
 .app-header{
   min-width: 100vw;
   max-width: 100vw;
-  min-height: 500px;
-  height: 70vh;
+  min-height: 200px;
+  height: 40vh;
+  padding: 10vh;
+  margin-top: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: url('/img/main_mamba.png');
-  background-color: black;
+  background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
